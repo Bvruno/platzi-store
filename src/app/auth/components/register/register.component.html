@@ -1,0 +1,43 @@
+<h3>Registro</h3>
+<form [formGroup]="form" (ngSubmit)="registerUser($event)" class="example-form">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ingrese su nombre</mat-label>
+    <input type="text" matInput placeholder="Placeholder" formControlName="nombre" required>
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ingrese su Email</mat-label>
+    <input type="email" matInput placeholder="pat@example.com" [formControl]="emailFormControl" formControlName="email" required>
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Por favor ingrese un Email valido
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      El Email es <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ingrese su contraseña</mat-label>
+    <input matInput type="password" formControlName="password" [formControl]="passwordFormControl" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="passwordFormControl.hasError('required')">La contraseña es <strong>requerida</strong></mat-error>
+    <mat-error *ngIf="passwordFormControl.hasError('minLength')">Necesita minimo <strong>6 caracteres</strong></mat-error>
+    <mat-error *ngIf="passwordFormControl.hasError('maxLength')">No mas de <strong>10 caracteres</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Vuelva a ingresar su contraseña</mat-label>
+    <input matInput type="password" formControlName="password2" [formControl]="passwordFormControl" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="passwordField.hasError('')"></mat-error>
+  </mat-form-field>
+
+  <button [disabled]="form.invalid" type="submit" mat-button>Registrar</button>
+</form>

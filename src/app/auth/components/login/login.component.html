@@ -1,0 +1,19 @@
+<h3>Login</h3>
+<form [formGroup]="form" (ngSubmit)="loginUser($event)" class="example-form">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ingrese su Email</mat-label>
+    <input type="email" matInput placeholder="pat@example.com" [formControl]="email" formControlName="email" required>
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Ingrese su contraseña</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button [disabled]="form.invalid" type="submit" mat-button>Ingresar</button>
+</form>

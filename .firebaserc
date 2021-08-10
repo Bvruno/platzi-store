@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "karlaapp-bc1ea": {
+      "hosting": {
+        "platzi-store": [
+          "karlaapp-bc1ea"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "karlaapp-bc1ea"
+  }
+}

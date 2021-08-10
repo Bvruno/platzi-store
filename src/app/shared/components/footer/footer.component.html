@@ -1,0 +1,22 @@
+<footer>
+  <div class="box">
+    <h3>Contacto</h3>
+    <form action="">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailField" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+        <mat-hint>Ingrese su Email</mat-hint>
+        <mat-error *ngIf="emailField.hasError('email') && !emailField.hasError('required')">
+          Ingrese un Email valido.
+        </mat-error>
+        <mat-error *ngIf="emailField.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="emailField.invalid" (click)="sendMail()">Enviar</button>
+    </form>
+  </div>
+
+
+
+</footer>
